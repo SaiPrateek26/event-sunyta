@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Financial District Circle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,380..640&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap">
@@ -295,7 +300,7 @@
   .field label{ font-size:0.8rem; color:var(--ink-dim); }
   .field input, .field select{
     background:var(--surface-2); border:1px solid var(--line-strong); border-radius:8px; color:var(--ink);
-    padding:0.7rem 0.85rem; font-size:0.95rem; font-family:inherit; outline:none;
+    padding:0.7rem 0.85rem; font-size:1rem; font-family:inherit; outline:none;
     transition:border-color var(--dur-fast) ease-out;
   }
   .field input:focus, .field select:focus{ border-color:var(--accent); }
@@ -351,6 +356,8 @@
     .drawer, .modal, .modal-scrim, .drawer-scrim, #nav-indicator, .statbar-fill{ transition-duration:1ms !important; }
   }
 </style>
+</head>
+<body>
 
 <header class="nav">
   <div class="nav-row">
@@ -594,6 +601,7 @@
             </ul>
             <button class="cta block" onclick="openModal()">Request an Invitation</button>
             <p class="dim" style="font-size:0.78rem; margin-top:0.9rem;">By invitation only — we personally review every request and follow up by call or message within 48 hours.</p>
+            <p class="dim" style="font-size:0.78rem; margin-top:0.6rem;">Questions first? <a href="mailto:reachus@sunyta.com" style="color:var(--accent);">reachus@sunyta.com</a> or <a href="https://wa.me/919866518289" target="_blank" rel="noopener" style="color:var(--accent);">WhatsApp us</a>.</p>
           </div>
         </div>
         <div>
@@ -695,6 +703,10 @@
 <footer>
   <div class="footer-row">
     <span>Financial District Circle — by SunYta</span>
+    <span class="mono" style="display:flex; flex-wrap:wrap; gap:0 1rem; align-items:center;">
+      <a href="mailto:reachus@sunyta.com" style="color:inherit;">reachus@sunyta.com</a>
+      <a href="https://wa.me/919866518289" target="_blank" rel="noopener" style="color:inherit;">WhatsApp +91 98665 18289</a>
+    </span>
     <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">Switch to dark</button>
   </div>
 </footer>
@@ -864,3 +876,5 @@
     go(initial);
   })();
 </script>
+</body>
+</html>

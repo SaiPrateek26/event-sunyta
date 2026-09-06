@@ -329,12 +329,6 @@
     display:flex; align-items:center; justify-content:center; margin:0 auto 1rem; font-size:1.3rem;
   }
 
-  /* ---------- Notify ---------- */
-  .notify-row{ display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:1.25rem; max-width:26rem; }
-  .notify-row input{ flex:1 1 200px; }
-  .notify-ok{ font-size:0.88rem; color:var(--accent); margin-top:0.75rem; display:none; }
-  .notify-ok.show{ display:block; }
-
   footer{ border-top:1px solid var(--line); padding:2.25rem clamp(1.25rem,4vw,3rem); }
   .footer-row{ max-width:var(--wide); margin:0 auto; display:flex; justify-content:space-between; align-items:center;
     flex-wrap:wrap; gap:1rem; font-size:0.82rem; color:var(--ink-faint); }
@@ -466,13 +460,12 @@
 
     <div class="section">
       <div class="wrap" style="max-width:34rem;">
-        <h2 class="h-section">Not ready for the 19th?</h2>
-        <p class="body-text" style="margin-top:0.8rem;">Leave your email and we'll tell you when the Circle comes to your city next.</p>
-        <form class="notify-row" onsubmit="return notifySubmit(event)">
-          <input type="email" required placeholder="you@firm.com" aria-label="Email address">
-          <button class="cta" type="submit">Notify me</button>
-        </form>
-        <p class="notify-ok" id="notifyOk">You're on the list — we'll be in touch before the next city is announced.</p>
+        <p class="eyebrow">Getting there</p>
+        <h2 class="h-section" style="margin-top:0.6rem;">Quorum Club, Mumbai</h2>
+        <p class="body-text" style="margin-top:0.8rem;">A private members' venue in Mumbai's business district. The exact address is shared once your invitation is confirmed — but here's a head start for mapping your route.</p>
+        <a class="cta ghost" style="margin-top:1.25rem; display:inline-flex; align-items:center; gap:0.5rem;" href="https://www.google.com/maps/search/?api=1&query=Quorum+Club+Mumbai" target="_blank" rel="noopener">
+          Get Directions ↗
+        </a>
       </div>
     </div>
   </section>
@@ -835,15 +828,6 @@
     document.getElementById('successPhone').textContent = phone;
     document.getElementById('formState').style.display = 'none';
     document.getElementById('successState').classList.add('show');
-    return false;
-  }
-
-  function notifySubmit(e){
-    e.preventDefault();
-    var input = e.target.querySelector('input[type="email"]');
-    sendToSheet({ type: 'notify', email: input ? input.value : '' });
-    document.getElementById('notifyOk').classList.add('show');
-    e.target.reset();
     return false;
   }
 

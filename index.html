@@ -358,6 +358,15 @@
       border-top:1px solid var(--line);
       box-shadow:0 -12px 24px -16px rgba(23,20,18,0.18);
     }
+    .mobile-cta-bar .cta{
+      animation: ctaBreathe 1.7s ease-in-out 3;
+      animation-delay: 700ms;
+    }
+  }
+
+  @keyframes ctaBreathe{
+    0%, 100%{ box-shadow:0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent); }
+    50%{ box-shadow:0 0 18px 5px color-mix(in srgb, var(--accent) 45%, transparent); }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -365,6 +374,7 @@
     .route.active{ animation:none; }
     .cta:active, .menu-btn:active{ transform:none; }
     .drawer, .modal, .modal-scrim, .drawer-scrim, #nav-indicator, .statbar-fill{ transition-duration:1ms !important; }
+    .mobile-cta-bar .cta{ animation:none; }
   }
 </style>
 </head>

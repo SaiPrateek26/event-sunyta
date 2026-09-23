@@ -436,6 +436,7 @@ src="https://www.facebook.com/tr?id=1639584040856706&ev=PageView&noscript=1"
 
   /* ---------- Mobile sticky CTA ---------- */
   .mobile-cta-bar{ display:none; }
+  body.hide-mobile-cta .mobile-cta-bar{ display:none !important; }
   @media (max-width:760px){
     body{ padding-bottom:5.5rem; }
     .mobile-cta-bar{
@@ -897,6 +898,60 @@ src="https://www.facebook.com/tr?id=1639584040856706&ev=PageView&noscript=1"
     </div>
   </section>
 
+
+  <section class="route" data-route="stuartguest">
+    <div class="wrap" style="padding-top:clamp(3rem,7vw,4.5rem);">
+      <p class="eyebrow">Private Invitation · Financial District Circle</p>
+      <h1 class="h-display" style="margin-top:0.9rem; max-width:20ch;">You're Invited, as a Guest of Stuart</h1>
+      <p class="lede" style="margin-top:1.2rem;">Complimentary access to The Exchange at Financial District Circle — Mumbai's curated gathering for wealth managers, CFPs and founders, Saturday 26 September at Quorum Club.</p>
+
+      <div class="ticket">
+        <div><label>Date</label><strong class="mono">26.09.2026</strong></div>
+        <div><label>Time</label><strong class="mono">9 AM – 4 PM</strong></div>
+        <div><label>Venue</label><strong>Quorum Club, Mumbai</strong></div>
+        <div><label>Your invitation</label><strong class="mono">Complimentary</strong></div>
+      </div>
+      <p class="dim mono" style="font-size:0.82rem; margin-top:0.75rem;">Limited to 40 seats · reserved for Stuart's personal guests</p>
+
+      <div class="hero-actions">
+        <button class="cta" onclick="openGuestModal()">Claim Your Invitation</button>
+        <button class="cta ghost" onclick="go('event')">See the full program</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="wrap two-col two-col--pricing">
+        <div>
+          <p class="eyebrow">Guest of Stuart</p>
+          <div class="price-card" style="margin-top:1rem;">
+            <p class="dim" style="font-size:0.85rem;">Participation fee</p>
+            <p class="price-amount" style="display:flex; align-items:baseline; gap:0.55rem; flex-wrap:wrap;">
+              <span style="text-decoration:line-through; opacity:0.4; font-size:0.55em;">₹999</span>
+              <span>Waived</span>
+            </p>
+            <p class="dim" style="font-size:0.82rem; margin-top:-0.8rem;">Guest of Stuart · Complimentary Invitation</p>
+            <ul class="price-list">
+              <li>Full-day access, 9 AM – 4 PM</li>
+              <li>Speaker sessions &amp; open floor</li>
+              <li>Lunch included</li>
+              <li>Limited to 40 seats</li>
+            </ul>
+            <button class="cta block" onclick="openGuestModal()">Claim Your Invitation</button>
+            <p class="dim" style="font-size:0.78rem; margin-top:0.9rem;">Valid only for guests personally invited or referred by Stuart. Non-transferable, and applicable to the Financial District Circle participation fee only.</p>
+            <p class="dim" style="font-size:0.78rem; margin-top:0.6rem;">Questions first? <a href="mailto:reachus@sunyta.com" style="color:var(--accent);">reachus@sunyta.com</a> or <a href="https://wa.me/919866518289" target="_blank" rel="noopener" style="color:var(--accent);">WhatsApp us</a>.</p>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow">What to expect</p>
+          <div style="margin-top:1rem;">
+            <p class="body-text">A day at Quorum with curated speaker sessions and open conversation, held in collaboration with Plan Prompt, Finvolve, PhillipCapital and EQBAC. No sponsor pitches, no name badges — closer to a small, hosted gathering than a summit.</p>
+            <p class="body-text" style="margin-top:1rem;">Claim your seat below — we'll confirm the details directly with you. No payment needed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <div class="mobile-cta-bar">
@@ -943,6 +998,39 @@ src="https://www.facebook.com/tr?id=1639584040856706&ev=PageView&noscript=1"
         <a class="cta ghost block" style="margin-top:0.9rem;" href="https://app.planprompt.ai/assessment/take/wealth-dharma?orgId=2d8953a3-8d62-4b55-a364-ab9946149d12&amp;userId=c27a1d76-a03c-4b0a-ba1d-903667ad00d1&amp;source=qr" target="_blank" rel="noopener">Take the Assessment ↗</a>
       </div>
       <button class="cta block" style="margin-top:1rem;" onclick="closeModal()">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= STUART GUEST MODAL ================= -->
+<div class="modal-scrim" id="guestModalScrim">
+  <div class="modal">
+    <button class="modal-close" onclick="closeGuestModal()" aria-label="Close">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </button>
+    <div id="guestFormState">
+      <p class="eyebrow">Edition 02 — Mumbai · Guest of Stuart</p>
+      <h3 class="h-card" style="margin-top:0.5rem;">Claim Your Invitation</h3>
+      <p class="dim" style="font-size:0.88rem; margin-top:0.4rem;">Saturday, 26 September · Quorum Club · Complimentary · 40 seats</p>
+      <form style="margin-top:1.5rem;" onsubmit="return applyGuestSubmit(event)">
+        <div class="field"><label for="g-name">Full name</label><input id="g-name" required></div>
+        <div class="field"><label for="g-email">Email ID</label><input id="g-email" type="email" required></div>
+        <div class="field"><label for="g-phone">Phone number</label><input id="g-phone" type="tel" placeholder="+91 98765 43210" required></div>
+        <div class="field"><label for="g-designation">Designation</label><input id="g-designation" placeholder="e.g. Wealth Manager, CFP, Founder" required></div>
+        <div class="field"><label for="g-linkedin">LinkedIn profile</label><input id="g-linkedin" type="url" placeholder="https://linkedin.com/in/yourname" required></div>
+        <div class="field"><label for="g-website">Company website</label><input id="g-website" type="url" placeholder="https://yourcompany.com" required></div>
+        <button class="cta block" type="submit">Claim Your Invitation</button>
+      </form>
+    </div>
+    <div class="success" id="guestSuccessState">
+      <div class="check">✓</div>
+      <h3 class="h-card">You're confirmed</h3>
+      <p class="dim" style="margin-top:0.5rem;">Your seat is reserved as a guest of Stuart — no payment needed. We'll be in touch at <span id="guestSuccessPhone" class="mono"></span> with the final details ahead of 26 September.</p>
+      <div style="margin-top:1.35rem; padding-top:1.1rem; border-top:1px solid var(--line);">
+        <p class="dim" style="font-size:0.85rem;">One more thing — take the Wealth Dharma assessment before the day. It's what turns Stuart's session on behavioural finance into a conversation, not just a talk.</p>
+        <a class="cta ghost block" style="margin-top:0.9rem;" href="https://app.planprompt.ai/assessment/take/wealth-dharma?orgId=2d8953a3-8d62-4b55-a364-ab9946149d12&amp;userId=c27a1d76-a03c-4b0a-ba1d-903667ad00d1&amp;source=qr" target="_blank" rel="noopener">Take the Assessment ↗</a>
+      </div>
+      <button class="cta block" style="margin-top:1rem;" onclick="closeGuestModal()">Done</button>
     </div>
   </div>
 </div>
@@ -1007,6 +1095,7 @@ src="https://www.facebook.com/tr?id=1639584040856706&ev=PageView&noscript=1"
     });
     moveIndicator(route);
     toggleDrawer(false);
+    document.body.classList.toggle('hide-mobile-cta', route === 'stuartguest');
     window.scrollTo({ top:0, behavior: reduceMotion ? 'auto' : 'smooth' });
     if(route === 'event'){ animateStats(); }
     try{ history.replaceState(null,'', '#'+route); }catch(e){}
@@ -1060,6 +1149,16 @@ src="https://www.facebook.com/tr?id=1639584040856706&ev=PageView&noscript=1"
   }
   document.getElementById('modalScrim').addEventListener('click', function(e){
     if(e.target === this) closeModal();
+  });
+
+  function openGuestModal(){
+    document.getElementById('guestModalScrim').classList.add('open');
+  }
+  function closeGuestModal(){
+    document.getElementById('guestModalScrim').classList.remove('open');
+  }
+  document.getElementById('guestModalScrim').addEventListener('click', function(e){
+    if(e.target === this) closeGuestModal();
   });
 
   var SPEAKERS = {
@@ -1128,6 +1227,7 @@ src="https://www.facebook.com/tr?id=1639584040856706&ev=PageView&noscript=1"
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape'){
       closeModal();
+      closeGuestModal();
       closeSpeakerModal();
       toggleDrawer(false);
     }
@@ -1160,6 +1260,35 @@ src="https://www.facebook.com/tr?id=1639584040856706&ev=PageView&noscript=1"
     return false;
   }
 
+  function applyGuestSubmit(e){
+    e.preventDefault();
+    var name = document.getElementById('g-name').value;
+    var email = document.getElementById('g-email').value;
+    var phone = document.getElementById('g-phone').value;
+    var designation = document.getElementById('g-designation').value;
+    var linkedin = document.getElementById('g-linkedin').value;
+    var website = document.getElementById('g-website').value;
+
+    sendToSheet({
+      type: 'stuart_guest_registration',
+      name: name, email: email, phone: phone, designation: designation, linkedin: linkedin, website: website,
+      event: 'Financial District Circle — Mumbai, 26 Sep 2026',
+      invitedBy: 'Stuart Erskine',
+      offer: 'Stuart Guest Invitation'
+    });
+
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead', {
+        content_name: 'Financial District Circle — Stuart Guest Invitation'
+      });
+    }
+
+    document.getElementById('guestSuccessPhone').textContent = phone;
+    document.getElementById('guestFormState').style.display = 'none';
+    document.getElementById('guestSuccessState').classList.add('show');
+    return false;
+  }
+
   function animateStats(){
     document.querySelectorAll('.statbar-fill').forEach(function(el){
       var pct = el.getAttribute('data-pct');
@@ -1185,7 +1314,7 @@ src="https://www.facebook.com/tr?id=1639584040856706&ev=PageView&noscript=1"
 
   (function init(){
     var initial = (location.hash || '#home').replace('#','');
-    if(!['home','event','past','about'].includes(initial)) initial = 'home';
+    if(!['home','event','past','about','stuartguest'].includes(initial)) initial = 'home';
     go(initial);
   })();
 </script>

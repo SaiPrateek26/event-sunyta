@@ -1202,8 +1202,9 @@ src="https://www.facebook.com/tr?id=1639584040856706&ev=PageView&noscript=1"
         <div class="field"><label for="f-phone">Phone / WhatsApp number</label><input id="f-phone" type="tel" required></div>
         <div class="field"><label for="f-designation">Designation</label><input id="f-designation" required></div>
         <div class="field"><label for="f-company">Company name</label><input id="f-company" required></div>
+        <div class="field"><label for="f-linkedin">LinkedIn profile <span style="color:var(--ink-faint);">(optional)</span></label><input id="f-linkedin" type="text" inputmode="url" autocomplete="url" placeholder="linkedin.com/in/yourname"></div>
         <button class="cta block" type="submit">Submit Request</button>
-        <p class="dim" style="font-size:0.78rem; margin-top:0.9rem;">By submitting, you agree to our <a onclick="closeModal(); go('terms')" style="color:var(--accent); cursor:pointer;">Terms</a> and <a onclick="closeModal(); go('privacy')" style="color:var(--accent); cursor:pointer;">Privacy Policy</a>, including that your contact details are shared with the speaker(s) and their teams.</p>
+        <p class="dim" style="font-size:0.78rem; margin-top:0.9rem;">By submitting, you agree to our <a onclick="closeModal(); go('terms')" style="color:var(--accent); cursor:pointer;">Terms</a> and <a onclick="closeModal(); go('privacy')" style="color:var(--accent); cursor:pointer;">Privacy Policy</a>, including that your contact details and LinkedIn profile (if provided) are shared with the speaker(s) and their teams.</p>
       </form>
     </div>
     <div class="success" id="successState">
@@ -1425,10 +1426,12 @@ src="https://www.facebook.com/tr?id=1639584040856706&ev=PageView&noscript=1"
     var phone = document.getElementById('f-phone').value;
     var designation = document.getElementById('f-designation').value;
     var company = document.getElementById('f-company').value;
+    var linkedin = (document.getElementById('f-linkedin').value || '').trim();
+    if(linkedin && !/^https?:\/\//i.test(linkedin)){ linkedin = 'https://' + linkedin; }
 
     sendToSheet({
       type: 'registration_hyderabad',
-      name: name, email: email, phone: phone, designation: designation, company: company,
+      name: name, email: email, phone: phone, designation: designation, company: company, linkedin: linkedin,
       event: 'The Exchange | Hyderabad — 19 Nov 2026'
     });
 
